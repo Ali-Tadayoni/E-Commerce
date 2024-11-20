@@ -1,14 +1,15 @@
 <script setup>
 import Cart from "@/components/Cart.vue";
 import EmptyCart from "@/components/EmptyCart.vue";
+import { computed } from "vue";
 import { store } from "@/store/store";
+
+const hasItemsInCart = computed(() => store.state.cart.length > 0);
 </script>
 
 <template>
-  <div class="mx-auto max-w-3xl" v-if="store.state.cart.length">
-    <Cart />
-  </div>
-  <div v-else>
-    <EmptyCart />
-  </div>
+  <!-- Render Cart if the cart has items -->
+  <Cart v-if="hasItemsInCart" />
+  <!-- Render EmptyCart if the cart is empty -->
+  <EmptyCart v-else />
 </template>

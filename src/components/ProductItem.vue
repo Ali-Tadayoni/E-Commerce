@@ -14,7 +14,7 @@ const isAdded = computed(() => {
 });
 
 const addToCartHandler = () => {
-  let cartItem = {
+  let cartProduct = {
     id: props.product.id,
     title: props.product.title,
     unitPrice: props.product.price,
@@ -22,14 +22,12 @@ const addToCartHandler = () => {
     totalPrice: props.product.price,
     image: props.product.images,
   };
-  store.commit("addToCart", cartItem);
+  store.commit("addToCart", cartProduct);
   toast.success("Added to cart successfully");
-  isAdded.value = true;
 };
 const removeFromCartHandler = (id) => {
   store.commit("removeFromCart", id);
   toast.info("Removed from cart successfully");
-  isAdded.value = false;
 };
 </script>
 
@@ -45,17 +43,18 @@ const removeFromCartHandler = (id) => {
       <div className="mt-auto flex items-center justify-between">
         <p className="text-sm">${{ props.product.price }}</p>
 
+        <!-- Button to add/remove from the cart -->
         <button
           v-if="!isAdded"
           @click="addToCartHandler"
-          class="focus: focus: focus: inline-block rounded-full text-sm bg-blue-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-2 md:px-5 md:py-2.5"
+          class="button-style button-style:focus px-4 py-2 md:px-5 md:py-2.5"
         >
           Add To Cart
         </button>
         <button
           v-else
           @click="removeFromCartHandler(props.product.id)"
-          class="focus: focus: focus: inline-block rounded-full text-sm bg-blue-400 font-semibold uppercase tracking-wide text-stone-800 transition-colors duration-300 hover:bg-blue-300 focus:bg-blue-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-2 md:px-5 md:py-2.5"
+          class="button-style button-style:focus px-4 py-2 md:px-5 md:py-2.5"
         >
           Delete
         </button>

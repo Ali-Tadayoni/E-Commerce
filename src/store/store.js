@@ -11,9 +11,11 @@ export const store = createStore({
   },
 
   mutations: {
+    // Sets the fetched products into the state
     setProducts(state, products) {
       state.products = products;
     },
+    // Updates the loading state
     setLoading(state, isLoading) {
       state.isLoading = isLoading;
     },
@@ -45,18 +47,17 @@ export const store = createStore({
 
   actions: {
     async fetchProducts({ commit, state }) {
-      // Fetch products only if they are not already loaded
-      if (state.products.length === 0) {
-        commit("setLoading", true);
-        try {
-          const response = await fetch(`${API_URL}?limit=${PRODUCTS_LIMIT}`);
-          const data = await response.json();
-          commit("setProducts", data.products);
-        } catch (error) {
-          console.error("Error Fetching Products", error);
-        } finally {
-          commit("setLoading", false);
-        }
+      // Skip fetching if products are already loaded (This will improve performance, because products fetchs just one time)
+      if (state.products.length > 0) return;
+      commit("setLoading", true);
+      try {
+        const response = await fetch(`${API_URL}?limit=${PRODUCTS_LIMIT}`);
+        const data = await response.json();
+        commit("setProducts", data.products);
+      } catch (error) {
+        console.error("Error Fetching Products", error);
+      } finally {
+        commit("setLoading", false);
       }
     },
   },

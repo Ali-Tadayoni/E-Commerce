@@ -4,7 +4,7 @@ import { useToast } from "vue-toastification";
 const toast = useToast();
 const handleSubmit = () => {
   toast.success("Your Order Submited Successfuly");
-  // More Features soon. 🚀
+  // Placeholder for additional functionality later.🚀
 };
 </script>
 
@@ -33,6 +33,7 @@ const handleSubmit = () => {
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="Your Name..."
               required
+              aria-label="Full Name"
             />
           </div>
 
@@ -49,6 +50,7 @@ const handleSubmit = () => {
               class="border rounded w-full py-2 px-3"
               placeholder="Email Address..."
               required
+              aria-label="Email Address"
             />
           </div>
           <div class="mb-4">
@@ -63,6 +65,7 @@ const handleSubmit = () => {
               name="contact_phone"
               class="border rounded w-full py-2 px-3"
               placeholder="Your Phone..."
+              aria-label="Phone Number"
             />
           </div>
 
@@ -77,6 +80,7 @@ const handleSubmit = () => {
               class="border rounded w-full py-2 px-3 mb-2"
               placeholder="Your Address"
               required
+              aria-label="Address"
             />
           </div>
 

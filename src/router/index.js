@@ -23,7 +23,7 @@ const router = createRouter({
       component: CheckoutView,
     },
     {
-      path: "/:catchAll(.*)",
+      path: "/:catchAll(.*)", // Fallback route for undefined paths (404 page)
       name: "not-found",
       component: NotFoundView,
     },
