@@ -1,3 +1,3 @@
 <script setup></script>
 
-<template></template>
+<template>cart</template>
