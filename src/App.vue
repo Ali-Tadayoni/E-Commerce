@@ -4,6 +4,8 @@ import Header from "./components/Header.vue";
 </script>
 
 <template>
-  <Header />
-  <RouterView />
+  <div class="h-screen">
+    <Header />
+    <RouterView />
+  </div>
 </template>
