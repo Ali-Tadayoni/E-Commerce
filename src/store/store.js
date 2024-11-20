@@ -44,4 +44,13 @@ export const store = createStore({
       }
     },
   },
+
+  getters: {
+    getTotalCartQuantity: (state) => {
+      return state.cart.reduce((sum, item) => sum + item.quantity, 0);
+    },
+    getTotalCartPrice: (state) => {
+      return state.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+    },
+  },
 });
