@@ -31,7 +31,7 @@ You can also run the project locally in your computer, just follow steps below
 1. Clone the repository:
 
    ```
-   git clone https://github.com/YourUsername/Vue-Jobs
+   git clone https://github.com/Ali-Tadayoni/E-Commerce
    ```
 
 2. Install dependencies:
