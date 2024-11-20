@@ -1,10 +1,12 @@
 <script setup>
 import { store } from "@/store/store";
 import { defineProps, computed } from "vue";
-
+import { useToast } from "vue-toastification";
 const props = defineProps({
   product: Object,
 });
+
+const toast = useToast();
 
 // Compute whether the product is already in the cart
 const isAdded = computed(() => {
@@ -21,10 +23,12 @@ const addToCartHandler = () => {
     image: props.product.images,
   };
   store.commit("addToCart", cartItem);
+  toast.success("Added to cart successfully");
   isAdded.value = true;
 };
 const removeFromCartHandler = (id) => {
   store.commit("removeFromCart", id);
+  toast.info("Removed from cart successfully");
   isAdded.value = false;
 };
 </script>

@@ -4,6 +4,9 @@ import { computed } from "vue";
 import { RouterLink } from "vue-router";
 import { store } from "@/store/store";
 import CartItem from "./CartItem.vue";
+import { useToast } from "vue-toastification";
+
+const toast = useToast();
 
 const totalCartQuantity = computed(() => store.getters.getTotalCartQuantity);
 const totalCartPrice = computed(() => {
@@ -12,7 +15,13 @@ const totalCartPrice = computed(() => {
 });
 
 const clearCartHandler = () => {
-  store.commit("clearCart");
+  const confirm = window.confirm(
+    "⚠️ Are You Share You Want To Clear The Cart?"
+  );
+  if (confirm) {
+    store.commit("clearCart");
+    toast.success("Your Cart Is Empty Now");
+  }
 };
 </script>
 

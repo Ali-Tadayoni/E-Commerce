@@ -5,7 +5,7 @@ import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import ProductItem from "./ProductItem.vue";
 
 onMounted(() => {
-  store.dispatch("fetchProducts"); // Fetch products using the Vuex action
+  store.dispatch("fetchProducts"); // Fetch products when component Mounts
 });
 </script>
 
