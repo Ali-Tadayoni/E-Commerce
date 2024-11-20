@@ -1,8 +1,9 @@
 <script setup>
 import { computed } from "vue";
-// import CartItem from "@/components/CartItem.vue";
+
 import { RouterLink } from "vue-router";
 import { store } from "@/store/store";
+import CartItem from "./CartItem.vue";
 
 const totalCartQuantity = computed(() => store.getters.getTotalCartQuantity);
 const totalCartPrice = computed(() => {
@@ -25,7 +26,9 @@ const clearCartHandler = () => {
 
     <h2 className="mt-7 text-xl font-semibold">Your cart</h2>
 
-    <ul className="mt-3 divide-y divide-stone-200 border-b"></ul>
+    <ul className="mt-3 divide-y divide-stone-200 border-b">
+      <CartItem v-for="item in store.state.cart" :key="item.id" :item="item" />
+    </ul>
 
     <div className="mt-6 flex items-center justify-between">
       <div class="space-x-2">

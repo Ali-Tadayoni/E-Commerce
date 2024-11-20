@@ -5,7 +5,7 @@ import { store } from "@/store/store";
 </script>
 
 <template>
-  <div v-if="store.state.cart.length">
+  <div class="mx-auto max-w-3xl" v-if="store.state.cart.length">
     <Cart />
   </div>
   <div v-else>

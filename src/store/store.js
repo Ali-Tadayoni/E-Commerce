@@ -25,6 +25,22 @@ export const store = createStore({
         return item.id !== id;
       });
     },
+    clearCart(state) {
+      state.cart = [];
+    },
+    increaseItemQuantity(state, id) {
+      const item = state.cart.find((item) => item.id === id);
+      item.quantity++;
+      item.totalPrice = item.quantity * item.unitPrice;
+    },
+    decreseItemQuantity(state, id) {
+      const item = state.cart.find((item) => item.id === id);
+      item.quantity--;
+      item.totalPrice = item.quantity * item.unitPrice;
+      if (item.quantity === 0) {
+        this.commit("removeFromCart", id);
+      }
+    },
   },
 
   actions: {
